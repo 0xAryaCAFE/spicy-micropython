@@ -104,25 +104,26 @@ enum { // Moved to an enum
 #if CFG_TUD_HID
 // Mouse Absolute Report Descriptor Template
 #define TUD_HID_REPORT_DESC_MOUSE_ABS(...) \
-  HID_USAGE_PAGE ( HID_USAGE_PAGE_DESKTOP      )                   ,\
-  HID_USAGE      ( HID_USAGE_DESKTOP_MOUSE     )                   ,\
+  /* Digitizer */\
+  HID_USAGE_PAGE ( 0x0D                        )                   ,\
+  /* Touch Screen */\
+  HID_USAGE      ( 0x04                        )                   ,\
   HID_COLLECTION ( HID_COLLECTION_APPLICATION  )                   ,\
     /* Report ID if any */\
     __VA_ARGS__ \
-    HID_USAGE      ( HID_USAGE_DESKTOP_POINTER )                   ,\
-    HID_COLLECTION ( HID_COLLECTION_PHYSICAL   )                   ,\
-      HID_USAGE_PAGE  ( HID_USAGE_PAGE_BUTTON  )                   ,\
-        HID_USAGE_MIN   ( 1                                      ) ,\
-        HID_USAGE_MAX   ( 5                                      ) ,\
+    /* Finger */\
+    HID_USAGE      ( 0x22                      )                   ,\
+    HID_COLLECTION ( HID_COLLECTION_LOGICAL   )                   ,\
+        /* Tip Switch */\
+        HID_USAGE       ( 0x42                                   ) ,\
         HID_LOGICAL_MIN ( 0                                      ) ,\
         HID_LOGICAL_MAX ( 1                                      ) ,\
-        /* Left, Right, Middle, Backward, Forward buttons */ \
-        HID_REPORT_COUNT( 5                                      ) ,\
+        HID_REPORT_COUNT( 1                                      ) ,\
         HID_REPORT_SIZE ( 1                                      ) ,\
         HID_INPUT       ( HID_DATA | HID_VARIABLE | HID_ABSOLUTE ) ,\
-        /* 3 bit padding */ \
+        /* 7 bit padding */ \
         HID_REPORT_COUNT( 1                                      ) ,\
-        HID_REPORT_SIZE ( 3                                      ) ,\
+        HID_REPORT_SIZE ( 7                                      ) ,\
         HID_INPUT       ( HID_CONSTANT                           ) ,\
       HID_USAGE_PAGE  ( HID_USAGE_PAGE_DESKTOP )                   ,\
         /* X, Y position [0, 32767] */ \
