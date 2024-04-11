@@ -106,35 +106,205 @@ enum { // Moved to an enum
 #define TUD_HID_REPORT_DESC_MOUSE_ABS(...) \
   /* Digitizer */\
   HID_USAGE_PAGE ( 0x0D                        )                   ,\
-  /* Touch Screen */\
-  HID_USAGE      ( 0x04                        )                   ,\
+  /* Touch Pad */\
+  HID_USAGE      ( 0x05                        )                   ,\
   HID_COLLECTION ( HID_COLLECTION_APPLICATION  )                   ,\
     /* Report ID if any */\
     __VA_ARGS__ \
+    /* FIRST FINGER */\
     /* Finger */\
+    HID_USAGE_PAGE ( 0x0D                        )                   ,\
     HID_USAGE      ( 0x22                      )                   ,\
     HID_COLLECTION ( HID_COLLECTION_LOGICAL   )                   ,\
+        /* Contact Count */\
+        HID_USAGE       ( 0x47                                   ) ,\
         /* Tip Switch */\
         HID_USAGE       ( 0x42                                   ) ,\
         HID_LOGICAL_MIN ( 0                                      ) ,\
         HID_LOGICAL_MAX ( 1                                      ) ,\
-        HID_REPORT_COUNT( 1                                      ) ,\
         HID_REPORT_SIZE ( 1                                      ) ,\
-        HID_INPUT       ( HID_DATA | HID_VARIABLE | HID_ABSOLUTE ) ,\
-        /* 7 bit padding */ \
-        HID_REPORT_COUNT( 1                                      ) ,\
-        HID_REPORT_SIZE ( 7                                      ) ,\
-        HID_INPUT       ( HID_CONSTANT                           ) ,\
-      HID_USAGE_PAGE  ( HID_USAGE_PAGE_DESKTOP )                   ,\
-        /* X, Y position [0, 32767] */ \
-        HID_USAGE       ( HID_USAGE_DESKTOP_X                    ) ,\
-        HID_USAGE       ( HID_USAGE_DESKTOP_Y                    ) ,\
-        HID_LOGICAL_MIN_N ( 0x0000, 2                            ) ,\
-        HID_LOGICAL_MAX_N ( 0x7fff, 2                            ) ,\
         HID_REPORT_COUNT( 2                                      ) ,\
+        HID_INPUT       ( HID_DATA | HID_VARIABLE | HID_ABSOLUTE ) ,\
+        HID_REPORT_COUNT( 6                                      ) ,\
+        HID_INPUT       ( HID_CONSTANT | HID_VARIABLE            ) ,\
+        HID_USAGE       ( 0x51                                   ) ,\
+        HID_LOGICAL_MAX ( 15                                     ) ,\
+        HID_REPORT_SIZE ( 8                                      ) ,\
+        HID_REPORT_COUNT( 1                                      ) ,\
+        HID_INPUT       ( HID_DATA | HID_VARIABLE | HID_ABSOLUTE ) ,\
+      HID_USAGE_PAGE  ( HID_USAGE_PAGE_DESKTOP )                   ,\
+        HID_USAGE       ( HID_USAGE_DESKTOP_X                    ) ,\
         HID_REPORT_SIZE ( 16                                     ) ,\
+        HID_UNIT_EXPONENT(0x0E                                   ) ,\
+        HID_UNIT        ( 0x11                                   ) ,\
+        HID_PHYSICAL_MIN ( 0                                     ) ,\
+        HID_PHYSICAL_MAX_N ( 1114, 2                             ) ,\
+        HID_LOGICAL_MAX_N ( 1337, 3                              ) ,\
+        HID_INPUT       ( HID_DATA | HID_VARIABLE | HID_ABSOLUTE ) ,\
+        HID_USAGE       ( HID_USAGE_DESKTOP_Y                    ) ,\
+        HID_PHYSICAL_MAX_N ( 730, 2                              ) ,\
+        HID_LOGICAL_MAX_N ( 876, 3                               ) ,\
         HID_INPUT       ( HID_DATA | HID_VARIABLE | HID_ABSOLUTE ) ,\
     HID_COLLECTION_END                                            , \
+     /* SECOND FINGER */\
+    HID_USAGE_PAGE ( 0x0D                     )                   ,\
+    HID_USAGE      ( 0x22                     )                   ,\
+    HID_COLLECTION ( HID_COLLECTION_LOGICAL   )                   ,\
+        HID_USAGE       ( 0x47                                   ) ,\
+        HID_USAGE       ( 0x42                                   ) ,\
+        HID_LOGICAL_MIN ( 0                                      ) ,\
+        HID_LOGICAL_MAX ( 1                                      ) ,\
+        HID_REPORT_SIZE ( 1                                      ) ,\
+        HID_REPORT_COUNT( 2                                      ) ,\
+        HID_INPUT       ( HID_DATA | HID_VARIABLE | HID_ABSOLUTE ) ,\
+        HID_REPORT_COUNT( 6                                      ) ,\
+        HID_INPUT       ( HID_CONSTANT | HID_VARIABLE            ) ,\
+        HID_USAGE       ( 0x51                                   ) ,\
+        HID_LOGICAL_MAX ( 15                                     ) ,\
+        HID_REPORT_SIZE ( 8                                      ) ,\
+        HID_REPORT_COUNT( 1                                      ) ,\
+        HID_INPUT       ( HID_DATA | HID_VARIABLE | HID_ABSOLUTE ) ,\
+      HID_USAGE_PAGE  ( HID_USAGE_PAGE_DESKTOP )                   ,\
+        HID_USAGE       ( HID_USAGE_DESKTOP_X                    ) ,\
+        HID_REPORT_SIZE ( 16                                     ) ,\
+        HID_UNIT_EXPONENT(0x0E                                   ) ,\
+        HID_UNIT        ( 0x11                                   ) ,\
+        HID_PHYSICAL_MIN ( 0                                     ) ,\
+        HID_PHYSICAL_MAX_N ( 1114, 2                             ) ,\
+        HID_LOGICAL_MAX_N ( 1337, 3                              ) ,\
+        HID_INPUT       ( HID_DATA | HID_VARIABLE | HID_ABSOLUTE ) ,\
+        HID_USAGE       ( HID_USAGE_DESKTOP_Y                    ) ,\
+        HID_PHYSICAL_MAX_N ( 730, 2                              ) ,\
+        HID_LOGICAL_MAX_N ( 876, 3                               ) ,\
+        HID_INPUT       ( HID_DATA | HID_VARIABLE | HID_ABSOLUTE ) ,\
+    HID_COLLECTION_END                                            , \
+     /* THIRD FINGER */\
+    HID_USAGE_PAGE ( 0x0D                     )                   ,\
+    HID_USAGE      ( 0x22                     )                   ,\
+    HID_COLLECTION ( HID_COLLECTION_LOGICAL   )                   ,\
+        HID_USAGE       ( 0x47                                   ) ,\
+        HID_USAGE       ( 0x42                                   ) ,\
+        HID_LOGICAL_MIN ( 0                                      ) ,\
+        HID_LOGICAL_MAX ( 1                                      ) ,\
+        HID_REPORT_SIZE ( 1                                      ) ,\
+        HID_REPORT_COUNT( 2                                      ) ,\
+        HID_INPUT       ( HID_DATA | HID_VARIABLE | HID_ABSOLUTE ) ,\
+        HID_REPORT_COUNT( 6                                      ) ,\
+        HID_INPUT       ( HID_CONSTANT | HID_VARIABLE            ) ,\
+        HID_USAGE       ( 0x51                                   ) ,\
+        HID_LOGICAL_MAX ( 15                                     ) ,\
+        HID_REPORT_SIZE ( 8                                      ) ,\
+        HID_REPORT_COUNT( 1                                      ) ,\
+        HID_INPUT       ( HID_DATA | HID_VARIABLE | HID_ABSOLUTE ) ,\
+      HID_USAGE_PAGE  ( HID_USAGE_PAGE_DESKTOP )                   ,\
+        HID_USAGE       ( HID_USAGE_DESKTOP_X                    ) ,\
+        HID_REPORT_SIZE ( 16                                     ) ,\
+        HID_UNIT_EXPONENT(0x0E                                   ) ,\
+        HID_UNIT        ( 0x11                                   ) ,\
+        HID_PHYSICAL_MIN ( 0                                     ) ,\
+        HID_PHYSICAL_MAX_N ( 1114, 2                             ) ,\
+        HID_LOGICAL_MAX_N ( 1337, 3                              ) ,\
+        HID_INPUT       ( HID_DATA | HID_VARIABLE | HID_ABSOLUTE ) ,\
+        HID_USAGE       ( HID_USAGE_DESKTOP_Y                    ) ,\
+        HID_PHYSICAL_MAX_N ( 730, 2                              ) ,\
+        HID_LOGICAL_MAX_N ( 876, 3                               ) ,\
+        HID_INPUT       ( HID_DATA | HID_VARIABLE | HID_ABSOLUTE ) ,\
+    HID_COLLECTION_END                                            , \
+    /* FOURTH FINGER */\
+    HID_USAGE_PAGE ( 0x0D                     )                   ,\
+    HID_USAGE      ( 0x22                     )                   ,\
+    HID_COLLECTION ( HID_COLLECTION_LOGICAL   )                   ,\
+        HID_USAGE       ( 0x47                                   ) ,\
+        HID_USAGE       ( 0x42                                   ) ,\
+        HID_LOGICAL_MIN ( 0                                      ) ,\
+        HID_LOGICAL_MAX ( 1                                      ) ,\
+        HID_REPORT_SIZE ( 1                                      ) ,\
+        HID_REPORT_COUNT( 2                                      ) ,\
+        HID_INPUT       ( HID_DATA | HID_VARIABLE | HID_ABSOLUTE ) ,\
+        HID_REPORT_COUNT( 6                                      ) ,\
+        HID_INPUT       ( HID_CONSTANT | HID_VARIABLE            ) ,\
+        HID_USAGE       ( 0x51                                   ) ,\
+        HID_LOGICAL_MAX ( 15                                     ) ,\
+        HID_REPORT_SIZE ( 8                                      ) ,\
+        HID_REPORT_COUNT( 1                                      ) ,\
+        HID_INPUT       ( HID_DATA | HID_VARIABLE | HID_ABSOLUTE ) ,\
+      HID_USAGE_PAGE  ( HID_USAGE_PAGE_DESKTOP )                   ,\
+        HID_USAGE       ( HID_USAGE_DESKTOP_X                    ) ,\
+        HID_REPORT_SIZE ( 16                                     ) ,\
+        HID_UNIT_EXPONENT(0x0E                                   ) ,\
+        HID_UNIT        ( 0x11                                   ) ,\
+        HID_PHYSICAL_MIN ( 0                                     ) ,\
+        HID_PHYSICAL_MAX_N ( 1114, 2                             ) ,\
+        HID_LOGICAL_MAX_N ( 1337, 3                              ) ,\
+        HID_INPUT       ( HID_DATA | HID_VARIABLE | HID_ABSOLUTE ) ,\
+        HID_USAGE       ( HID_USAGE_DESKTOP_Y                    ) ,\
+        HID_PHYSICAL_MAX_N ( 730, 2                              ) ,\
+        HID_LOGICAL_MAX_N ( 876, 3                               ) ,\
+        HID_INPUT       ( HID_DATA | HID_VARIABLE | HID_ABSOLUTE ) ,\
+    HID_COLLECTION_END                                            , \
+    /* FIFTH FINGER */\
+    HID_USAGE_PAGE ( 0x0D                     )                   ,\
+    HID_USAGE      ( 0x22                     )                   ,\
+    HID_COLLECTION ( HID_COLLECTION_LOGICAL   )                   ,\
+        HID_USAGE       ( 0x47                                   ) ,\
+        HID_USAGE       ( 0x42                                   ) ,\
+        HID_LOGICAL_MIN ( 0                                      ) ,\
+        HID_LOGICAL_MAX ( 1                                      ) ,\
+        HID_REPORT_SIZE ( 1                                      ) ,\
+        HID_REPORT_COUNT( 2                                      ) ,\
+        HID_INPUT       ( HID_DATA | HID_VARIABLE | HID_ABSOLUTE ) ,\
+        HID_REPORT_COUNT( 6                                      ) ,\
+        HID_INPUT       ( HID_CONSTANT | HID_VARIABLE            ) ,\
+        HID_USAGE       ( 0x51                                   ) ,\
+        HID_LOGICAL_MAX ( 15                                     ) ,\
+        HID_REPORT_SIZE ( 8                                      ) ,\
+        HID_REPORT_COUNT( 1                                      ) ,\
+        HID_INPUT       ( HID_DATA | HID_VARIABLE | HID_ABSOLUTE ) ,\
+      HID_USAGE_PAGE  ( HID_USAGE_PAGE_DESKTOP )                   ,\
+        HID_USAGE       ( HID_USAGE_DESKTOP_X                    ) ,\
+        HID_REPORT_SIZE ( 16                                     ) ,\
+        HID_UNIT_EXPONENT(0x0E                                   ) ,\
+        HID_UNIT        ( 0x11                                   ) ,\
+        HID_PHYSICAL_MIN ( 0                                     ) ,\
+        HID_PHYSICAL_MAX_N ( 1114, 2                             ) ,\
+        HID_LOGICAL_MAX_N ( 1337, 3                              ) ,\
+        HID_INPUT       ( HID_DATA | HID_VARIABLE | HID_ABSOLUTE ) ,\
+        HID_USAGE       ( HID_USAGE_DESKTOP_Y                    ) ,\
+        HID_PHYSICAL_MAX_N ( 730, 2                              ) ,\
+        HID_LOGICAL_MAX_N ( 876, 3                               ) ,\
+        HID_INPUT       ( HID_DATA | HID_VARIABLE | HID_ABSOLUTE ) ,\
+    HID_COLLECTION_END                                            , \
+    /* ENDING PARAMS */\
+    HID_USAGE_PAGE ( 0x0D                     )                   ,\
+    /* Contact Count */\
+    HID_USAGE      ( 0x54                     )                   ,\
+    HID_LOGICAL_MIN ( 0                                      ) ,\
+    HID_LOGICAL_MAX ( 5                                      ) ,\
+    HID_REPORT_SIZE ( 8                                      ) ,\
+    HID_REPORT_COUNT( 1                                      ) ,\
+    HID_INPUT       ( HID_DATA | HID_VARIABLE | HID_ABSOLUTE ) ,\
+    HID_USAGE_PAGE  ( HID_USAGE_PAGE_BUTTON )                   ,\
+    HID_USAGE       ( 0x01                                   ) ,\
+    HID_USAGE       ( 0x02                                   ) ,\
+    HID_USAGE       ( 0x03                                   ) ,\
+    HID_LOGICAL_MIN ( 0                                      ) ,\
+    HID_LOGICAL_MAX ( 1                                      ) ,\
+    HID_REPORT_SIZE ( 1                                      ) ,\
+    HID_REPORT_COUNT( 3                                      ) ,\
+    HID_INPUT       ( HID_DATA | HID_VARIABLE | HID_ABSOLUTE ) ,\
+    HID_REPORT_COUNT( 5                                      ) ,\
+    HID_INPUT       ( HID_CONSTANT | HID_VARIABLE            ) ,\
+    HID_USAGE_PAGE  ( 0x0D                                   ) ,\
+    HID_USAGE       ( 0x56                                   ) ,\
+    HID_UNIT_EXPONENT(0x0C                                   ) ,\
+    HID_UNIT_N      ( 0x1001, 2                              ) ,\
+    HID_PHYSICAL_MIN( 0                                      ) ,\
+    HID_PHYSICAL_MAX_N ( 65535, 3                            ) ,\
+    HID_LOGICAL_MIN ( 0                                      ) ,\
+    HID_LOGICAL_MAX_N ( 65535, 3                             ) ,\
+    HID_REPORT_SIZE ( 16                                     ) ,\
+    HID_REPORT_COUNT( 1                                      ) ,\
+    HID_INPUT       ( HID_DATA | HID_VARIABLE | HID_ABSOLUTE ) ,\
   HID_COLLECTION_END \
 
 
